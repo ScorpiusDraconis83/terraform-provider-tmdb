@@ -72,7 +72,7 @@ func (d *popularMoviesDataSource) Read(ctx context.Context, req datasource.ReadR
 		return
 	}
 
-	// Map response body to model
+	// Map response body to model.
 	for _, movie := range movies {
 		movieState := moviesModel{
 			ID:          types.Int64Value(movie.ID),
@@ -122,9 +122,4 @@ type moviesModel struct {
 	Title       types.String `tfsdk:"title"`
 	Overview    types.String `tfsdk:"overview"`
 	ReleaseDate types.String `tfsdk:"releasedate"`
-}
-
-// moviesIngredientsModel maps movie ingredients data
-type moviesIngredientsModel struct {
-	ID types.Int64 `tfsdk:"id"`
 }
