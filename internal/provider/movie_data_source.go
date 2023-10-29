@@ -52,11 +52,12 @@ func (d *movieDataSource) Schema(_ context.Context, _ datasource.SchemaRequest, 
 // Read refreshes the Terraform state with the latest data.
 func (d *movieDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state movieDataSourceModel
+	resp.Diagnostics.Append(req.Config.Get(ctx, &state)...)
 
-	movie, err := d.client.GetMovieDetails(108, nil)
+	movie, err := d.client.GetMovieDetails(int(state.ID.ValueInt64()), nil)
 	if err != nil {
 		resp.Diagnostics.AddError(
-			"Unable to Read TMDB Movies",
+			fmt.Sprintf("Unable to Read TMDB Movie with ID: %v", state.ID.ValueInt64()),
 			err.Error(),
 		)
 		return
