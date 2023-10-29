@@ -138,6 +138,7 @@ func (p *tmdbProvider) Configure(ctx context.Context, req provider.ConfigureRequ
 func (p *tmdbProvider) DataSources(_ context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		NewPopularMoviesDataSource,
+		NewMovieDataSource,
 	}
 }
 

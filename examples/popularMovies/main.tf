@@ -8,8 +8,8 @@ terraform {
 
 provider "tmdb" {}
 
-data "tmdb_popular_movies" "edu" {}
+data "tmdb_popular_movies" "movies" {}
 
-output "edu_coffees" {
-  value = data.tmdb_popular_movies.edu
+output "popular_movies" {
+  value = data.tmdb_popular_movies.movies
 }
