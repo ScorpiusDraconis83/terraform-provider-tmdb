@@ -139,6 +139,7 @@ func (p *tmdbProvider) DataSources(_ context.Context) []func() datasource.DataSo
 	return []func() datasource.DataSource{
 		NewPopularMoviesDataSource,
 		NewMovieDataSource,
+		NewSearchDataSource,
 	}
 }
 
